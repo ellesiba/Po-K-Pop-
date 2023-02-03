@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- =============Google Fonts===================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fascinate&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+<!-- ======================== Audio ============================= -->
+
+    <h2>Music</h2>
+    <label class="switch">
+      <input type="checkbox" id="musicToggle">
+      <span class="slider round"></span>
+    </label>
+
+    <audio loop id="music">
+      <source src="audio/Henry Young - Honestly (feat. Ashley Alisha).mp3">
+    </audio>
+
+<!-- ==================== Opening Screen ============================ -->
+    <div id="title">
+      <h1>Po-K-Pop!</h1>
+    </div>
+
+    <div class="opening-buttons">
+      <button class="start-button" id="start-button" onclick="GameStart()"> Start!</button>
+      <button class="guideBtn" id="guideBtn">How to Play</button>
+
+  </div>
+
+<!-- ==================== End Screen =============================== -->
+
+<!---------Player 1 wins ----------->
+  <div class="p1-wins, hidden">
+    <h1>Heartthrob Wins!</h1>
+    <div class="avatar-win" src = "https://i.imgur.com/o2wohTb.png" ></div>
+  </div>
+
+<!---------Player 2 wins ----------->
+  <div class="p2-wins, hidden">
+    <h1>Heartbreaker Wins!</h1>
+    <div class="avatar-p2-win" src = "https://i.imgur.com/hsAD6Ig.png"></div>
+  </div>
+
+  <!--=========================== Battle Area ====================================-->
+    <div id="battle-screen"class="hidden">
+    <!----------- Player 1 ------------------>
+    <div id="player1"class="hidden">
+      <div id="name-p1">Heartthrob</div>
+      <div class="health-bar">
+        <div id="player1Health" class="player1-health"></div>
+      </div>
+      <div id="player1-controls"class="hidden">
+      <button id="player1Vocal" onclick="vocal()">Vocal</button>
+      <button id="player1Dance"onclick="dance()">Dance</button>
+      <button id="player1Visual"onclick="visual()">Visual</button>
+      <div class="avatar" src = "https://i.imgur.com/o2wohTb.png" ></div>
+      </div>
+    </div>
+    
+    <!----------- Player 2 ------------------>
+    <div id="player2"class="hidden">
+      <div id="name-p2">Heartbreaker</div>
+      <div class="health-bar">
+      <div id="player2Health" class="player2-health"></div>
+    </div>
+      <div id="player2-controls"class="hidden">
+      <button id="player2Vocal">Vocal</button>
+      <button id="player2Dance">Dance</button>
+      <button id="player2Heal">Heal</button>
+      <div class="avatar-p2" src="https://i.imgur.com/hsAD6Ig.png"></div>
+    </div>
+
+    <script type="text/javascript" src="js/app.js"></script>
+  </body>
+</html>
+
+
+
