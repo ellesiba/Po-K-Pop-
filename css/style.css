@@ -1,6 +1,6 @@
 /* ================== BG ======================== */
 body{
-    background-image: url('https://i.imgur.com/FI1pIVp.gif');
+    background-image: url('https://i.imgur.com/WrSk1JH.gif');
     background-size: cover;
     height: 100vh;
     padding:0;
@@ -38,10 +38,12 @@ body{
 
   h2{
     font-family: 'Concert One', cursive;
-    color:rgb(132, 77, 87);
+    color: white;
     margin-bottom: -10px;
     margin-top: 20px;
     text-align: center;
+    -webkit-text-stroke: 1px pink;
+    text-shadow: 0px 2px 4px pink;
   }
 
   .opening-buttons{
@@ -183,6 +185,7 @@ body{
     transition: 0.5s;
 }
 
+/*---------- Health Bar ---------------  */
   .health-bar {
     display: flex;
     justify-content: space-between;
@@ -207,7 +210,7 @@ body{
     background-color: rgb(132, 77, 87);
     border-radius: 25px;
   }
-  /*------------------ Avatars -----------------*/
+  /*================== Avatars ========================*/
   .avatar {
     width: 300px;
     height: 300px;
@@ -218,6 +221,11 @@ body{
     transform: scaleX(-1);
     margin-top: 200px;
     position: absolute;
+    animation-name:  side-to-side-p1;
+    animation-duration: .9s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    z-index: 1000;
   }
 
   .avatar-win {
@@ -241,7 +249,11 @@ body{
     border-radius: 50%;
     margin-top: 200px;
     position: absolute;
-
+    animation-name:  side-to-side-p2;
+    animation-duration: .9s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    z-index: 1000;
   }
 
   .avatar-p2-win {
@@ -253,18 +265,24 @@ body{
     margin-top: 0px;
     margin-left: 750px;
     position: absolute;
-
   }
+
+/* ============== Animation=================== */
+@keyframes side-to-side-p1 {
+  from {left: 10%;}
+  to {left: 20%;}
+}
+
+@keyframes side-to-side-p2 {
+  from {left: 70%;}
+  to {left: 60%;}
+}
 
   .hidden {
     display: none;
   }
 
   /* ============Audio Switch================== */
-  .label{
-    display: flex;
-    flex-direction: column;
-  }
   
   .switch {
     position: absolute;
@@ -290,7 +308,7 @@ body{
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: pink;
+    background-color: rgb(132, 77, 87);
     -webkit-transition: .4s;
     transition: .4s;
   }

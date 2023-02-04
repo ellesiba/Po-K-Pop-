@@ -26,13 +26,14 @@ toggle.addEventListener('change', function() {
 
 //========== Instructions ==============
 function instructions(){
-  alert("In this two player game you can play as Heartthrob or Heartbreaker to battle one another to see who truly is the best.");
-  alert("You can lower the other player's hp by singing or do increased damage by dancing");
-  alert("If you are hurt, you can use you healing visuals to perk yourself up.")
+  alert("In this two player game you can play as Heartthrob or Heartbreaker to battle one another to see who truly is the best idol.");
+  alert("You can lower the other player's hp with your amazing singing skills.");
+  alert("You can soften a hit with some killer dance moves.")
+  alert("And if you need a larger health boost, you can use your visual abiility to have fans perk you up!")
   alert("May the best idol win!")
 }
 
-//================================================================================
+//=============================== Attack/ Heal SetUp ======================================
 
       const MAX_HEALTH = 100;
 
@@ -102,61 +103,58 @@ function updateDisplay() {
   }
 
       updateDisplay();
+//============================== If Wins ===============================
+  function winner(){
+    if (player1.health <= 0) {
+      document.getElementById("start-button").style.display = "none";
+      document.getElementById("guideBtn").style.display = "none"
+      document.getElementById("title").style.display = "none"
+      document.getElementById("player1").classList.add("hidden");
+      document.getElementById("player1-controls").classList.add("hidden");
+      document.getElementById("player2").classList.add("hidden");
+      document.getElementById("p2-attack").style.display = "none";
+      document.getElementById("p2-block").style.display = "none";
+      document.getElementById("p2-heal").style.display = "none";
+      document.getElementById("p2-wins").classList.remove("hidden");
+      alert("Hearbreaker wins!");
+      document.getElementById("p2-wins").classList.remove("hidden");
 
-      function winner(){
-        if (player1.health <= 0) {
-          document.getElementById("start-button").style.display = "none";
-          document.getElementById("guideBtn").style.display = "none"
-          document.getElementById("title").style.display = "none"
-          document.getElementById("player1").classList.add("hidden");
-          document.getElementById("player1-controls").classList.add("hidden");
-          document.getElementById("player2").classList.add("hidden");
-          document.getElementById("p2-attack").style.display = "none";
-          document.getElementById("p2-block").style.display = "none";
-          document.getElementById("p2-heal").style.display = "none";
-          document.getElementById("p2-wins").classList.remove("hidden");
-          alert("Hearbreaker wins!");
-          document.getElementById("p2-wins").classList.remove("hidden");
-
-
-
-        } if (player2.health <= 0) {
-          document.getElementById("start-button").style.display = "none";
-          document.getElementById("guideBtn").style.display = "none"
-          document.getElementById("title").style.display = "none"
-          document.getElementById("player1").classList.add("hidden");
-          document.getElementById("player1-controls").classList.add("hidden");
-          document.getElementById("player2").classList.add("hidden");
-          document.getElementById("p2-attack").style.display = "none";
-          document.getElementById("p2-block").style.display = "none";
-          document.getElementById("p2-heal").style.display = "none";
-          document.getElementById("p1-wins").classList.remove("hidden");        
-          alert("Hearthrob wins!");
-          document.getElementById("p1-wins").classList.remove("hidden");        
-
-
+    } if (player2.health <= 0) {
+        document.getElementById("start-button").style.display = "none";
+        document.getElementById("guideBtn").style.display = "none"
+        document.getElementById("title").style.display = "none"
+        document.getElementById("player1").classList.add("hidden");
+        document.getElementById("player1-controls").classList.add("hidden");
+        document.getElementById("player2").classList.add("hidden");
+        document.getElementById("p2-attack").style.display = "none";
+        document.getElementById("p2-block").style.display = "none";
+        document.getElementById("p2-heal").style.display = "none";
+        document.getElementById("p1-wins").classList.remove("hidden");        
+        alert("Hearthrob wins!");
+        document.getElementById("p1-wins").classList.remove("hidden");        
         }
       }
 
-      function handleAttack() {
-        currentPlayer.attack(currentPlayer === player1 ? player2 : player1);
-        winner()
-        switchTurn();
-      }
+  //====================== Action & Switch ==================================    
+  function handleAttack() {
+    currentPlayer.attack(currentPlayer === player1 ? player2 : player1);
+    winner()
+    switchTurn();
+  }
 
-      function handleHeal() {
-        currentPlayer.heal();
-        winner()
-        switchTurn();
-      }
+  function handleHeal() {
+    currentPlayer.heal();
+    winner()
+    switchTurn();
+    }
 
-      function handleBlock() {
-        currentPlayer.block();
-        winner()
-        switchTurn();
-      }
+    function handleBlock() {
+      currentPlayer.block();
+      winner()
+      switchTurn();
+    }
 
-      function switchTurn() {
-        currentPlayer = currentPlayer === player1 ? player2 : player1;
-        updateDisplay();
-      }
+    function switchTurn() {
+     currentPlayer = currentPlayer === player1 ? player2 : player1;
+      updateDisplay();
+    }
