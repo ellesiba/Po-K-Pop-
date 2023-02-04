@@ -16,7 +16,7 @@
   <body>
 
 <!-- ======================== Audio ============================= -->
-
+    <label>
     <h2>Music</h2>
     <label class="switch">
       <input type="checkbox" id="musicToggle">
@@ -31,7 +31,6 @@
     <div id="title">
       <h1>Po-K-Pop!</h1>
     </div>
-
     <div class="opening-buttons">
       <button class="start-button" id="start-button" onclick="gameStart()"> Start!</button>
       <button class="guideBtn" id="guideBtn" onclick="instructions()">How to Play</button>
@@ -41,14 +40,14 @@
 <!-- ==================== End Screen =============================== -->
 
 <!---------Player 1 wins ----------->
-  <div class="p1-wins, hidden">
-    <h1>Heartthrob Wins!</h1>
+  <div class="p1-wins, hidden" id="p1-wins">
+    <h3>Heartthrob Wins!</h3>
     <div class="avatar-win" src = "https://i.imgur.com/o2wohTb.png" ></div>
   </div>
 
 <!---------Player 2 wins ----------->
-  <div class="p2-wins, hidden">
-    <h1>Heartbreaker Wins!</h1>
+  <div class="p2-wins, hidden" id="p2-wins">
+    <h3>Heartbreaker Wins!</h3>
     <div class="avatar-p2-win" src = "https://i.imgur.com/hsAD6Ig.png"></div>
   </div>
 
@@ -64,7 +63,7 @@
       <button id="p1-attack" onclick="handleAttack()">Attack</button>
       <button id="p1-block" onclick="handleBlock()">Block</button>
       <button id="p1-heal" onclick="handleHeal()">Heal</button>
-      <div class="avatar" src = "https://i.imgur.com/o2wohTb.png" ></div>
+      <div class="avatar" src = "https://i.imgur.com/o2wohTb.png"></div>
       </div>
     </div>
     
@@ -75,7 +74,7 @@
       <div id="player2-health" class="player2-health"></div>
     </div>
       <div id="player2-controls"class="hidden">
-      <button id="p2-attack">Attack</button>
+      <button id="p2-attack" onclick="handleAttack()">Attack</button>
       <button id="p2-block"  onclick="handleBlock()">Block</button>
       <button id="p2-heal" onclick="handleHeal()">Heal</button>
       <div class="avatar-p2" src="https://i.imgur.com/hsAD6Ig.png"></div>
@@ -84,6 +83,6 @@
     <script type="text/javascript" src="js/app.js"></script>
   </body>
 </html>
->
+
 
 
