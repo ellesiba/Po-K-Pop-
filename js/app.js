@@ -44,7 +44,7 @@ function instructions(){
         }
 
         attack(opponent) {
-          opponent.health -= 40;
+          opponent.health -= 10;
         }
 
         heal() {
