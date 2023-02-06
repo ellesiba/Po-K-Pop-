@@ -149,35 +149,35 @@ function getRandomInt(max) {
 }
 
 function hitOrMissAttack(){
-  let x = getRandomInt(10);
-  if (x <= 2){
+  let x = getRandomInt(100);
+  if (x <= 20){
       alert(`${currentPlayer.name} sang in the wrong key, the attack was ineffective.`)
-  }if (x >= 3){
+  }if (x >= 21){
     currentPlayer.attack(currentPlayer === player1 ? player2 : player1);
   }
 }
 
 function hitOrMissSpecial(){
   let x = getRandomInt(10);
-  if (x <= 7){
+  if (x <= 80){
     alert(`The fans did not find ${currentPlayer.name}'s wink charming. It was ineffective.`)
-  }if (x >= 8){
+  }if (x >= 81){
     currentPlayer.specialAttack(currentPlayer === player1 ? player2 : player1);
   }
 }
 
 function hitOrMissHeal(){
   let x = getRandomInt(10);
-  if (x <= 3){
+  if (x <= 50){
     alert(`${currentPlayer.name} accidentally picked the wrong angle... The fans were not impressed... It was ineffective.`)
-  }if (x >= 4){
+  }if (x >= 51){
     currentPlayer.heal(currentPlayer === player1 ? player2 : player1);
   }
 }
 
 function hitOrMissBlock(){
   let x = getRandomInt(10);
-  if (x <= 5){
+  if (x <= 11){
     alert(`${currentPlayer.name} stumbled on a dance step. It was ineffective.`)
   }if (x >= 6){
     currentPlayer.block(currentPlayer === player1 ? player2 : player1);
