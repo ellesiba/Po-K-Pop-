@@ -31,7 +31,9 @@ function instructions(){
   alert("In this two player game you can play as Heartthrob or Heartbreaker to battle one another to see who truly is the best idol.");
   alert("You can lower the other player's hp with your amazing singing skills.");
   alert("You can soften a hit with some killer dance moves.")
-  alert("And if you need a larger health boost, you can use your visual abiility to have fans perk you up!")
+  alert("If you need a larger health boost, you can use your visual abiility to have fans perk you up!")
+  alert("And you can wink at fans to land a critical attack of your opponent.");
+  alert("There is always a chance that your character may mess up, so think about your moves carefully.")
   alert("May the best idol win!")
 }
 
@@ -125,11 +127,6 @@ function updateDisplay() {
       document.getElementById("player1-controls").classList.add("hidden");
       document.getElementById("player2").classList.add("hidden");
       document.getElementById("player2-controls").classList.add("hidden");
-      // document.getElementById("p2-attack").style.display = "none";
-      // document.getElementById("p2-block").style.display = "none";
-      // document.getElementById("p2-heal").style.display = "none";
-      // document.getElementById("p2-heal").style.display = "none";
-      // document.getElementById("p2-wins").classList.remove("hidden");
       alert("Hearbreaker wins!");
       document.getElementById("p2-wins").classList.remove("hidden");
 
@@ -140,11 +137,7 @@ function updateDisplay() {
         document.getElementById("player1").classList.add("hidden");
         document.getElementById("player1-controls").classList.add("hidden");
         document.getElementById("player2").classList.add("hidden");
-        document.getElementById("player1-controls").classList.add("hidden");
-        // document.getElementById("p2-attack").style.display = "none";
-        // document.getElementById("p2-block").style.display = "none";
-        // document.getElementById("p2-heal").style.display = "none";
-        // document.getElementById("p1-wins").classList.remove("hidden");        
+        document.getElementById("player1-controls").classList.add("hidden");   
         alert("Hearthrob wins!");
         document.getElementById("p1-wins").classList.remove("hidden");        
         }
@@ -166,9 +159,9 @@ function hitOrMissAttack(){
 
 function hitOrMissSpecial(){
   let x = getRandomInt(10);
-  if (x <= 1){
+  if (x <= 7){
     alert(`The fans did not find ${currentPlayer.name}'s wink charming. It was ineffective.`)
-  }if (x >= 2){
+  }if (x >= 8){
     currentPlayer.specialAttack(currentPlayer === player1 ? player2 : player1);
   }
 }
