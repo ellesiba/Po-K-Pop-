@@ -150,9 +150,9 @@ function getRandomInt(max) {
 
 function hitOrMissAttack(){
   let x = getRandomInt(10);
-  if (x <= 3){
+  if (x <= 2){
       alert(`${currentPlayer.name} sang in the wrong key, the attack was ineffective.`)
-  }if (x >= 4){
+  }if (x >= 3){
     currentPlayer.attack(currentPlayer === player1 ? player2 : player1);
   }
 }
