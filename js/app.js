@@ -158,7 +158,7 @@ function hitOrMissAttack(){
 }
 
 function hitOrMissSpecial(){
-  let x = getRandomInt(10);
+  let x = getRandomInt(100);
   if (x <= 80){
     alert(`The fans did not find ${currentPlayer.name}'s wink charming. It was ineffective.`)
   }if (x >= 81){
@@ -167,7 +167,7 @@ function hitOrMissSpecial(){
 }
 
 function hitOrMissHeal(){
-  let x = getRandomInt(10);
+  let x = getRandomInt(100);
   if (x <= 50){
     alert(`${currentPlayer.name} accidentally picked the wrong angle... The fans were not impressed... It was ineffective.`)
   }if (x >= 51){
@@ -176,7 +176,7 @@ function hitOrMissHeal(){
 }
 
 function hitOrMissBlock(){
-  let x = getRandomInt(10);
+  let x = getRandomInt(100);
   if (x <= 11){
     alert(`${currentPlayer.name} stumbled on a dance step. It was ineffective.`)
   }if (x >= 6){
