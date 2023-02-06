@@ -326,8 +326,8 @@ body{
   .switch{
     position: absolute;
     display: inline-block;
-    width: 4%;
-    height: 5%;
+    width: 60px;
+    height: 35px;
     margin: auto;
     text-align: center;
     top: 10%;
