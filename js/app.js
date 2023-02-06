@@ -9,6 +9,8 @@ function gameStart(){
   document.getElementById("p2-attack").style.display = "none";
   document.getElementById("p2-block").style.display = "none";
   document.getElementById("p2-heal").style.display = "none";
+  document.getElementById("p2-special").style.display = "none";
+
 }
 
 //====================Audio============================
@@ -44,20 +46,24 @@ function instructions(){
         }
 
         attack(opponent) {
-          opponent.health -= 10;
+          opponent.health -= 30;
         }
 
         heal() {
-          this.health = Math.min(this.health + 15, MAX_HEALTH);
+          this.health = Math.min(this.health + 25, MAX_HEALTH);
         }
 
         block() {
-          this.health += 5;
+          this.health += 15;
+        }
+
+        specialAttack(opponent) {
+          opponent.health -= 50;
         }
       }
 
-      const player1 = new Player('Player 1');
-      const player2 = new Player('Player 2');
+      const player1 = new Player('Heartthrob');
+      const player2 = new Player('Heartbreaker');
 
       let currentPlayer = player1;
 
@@ -73,31 +79,37 @@ function updateDisplay() {
   const attackButtonP1 = document.getElementById("p1-attack");
   const blockButtonP1 = document.getElementById("p1-block");
   const healButtonP1 = document.getElementById("p1-heal");
+  const specialButtonP1 = document.getElementById("p1-special")
 
   const attackButtonP2 = document.getElementById("p2-attack");
   const blockButtonP2 = document.getElementById("p2-block");
   const healButtonP2 = document.getElementById("p2-heal");
+  const specialButtonP2 = document.getElementById("p2-special")
   
   if (currentPlayer === player1) {
     attackButtonP1.style.display = "inline";
     blockButtonP1.style.display = "inline";
     healButtonP1.style.display = "inline";
-    
+    specialButtonP1.style.display = "inline";
   
   } else {
     attackButtonP1.style.display = "none";
     blockButtonP1.style.display = "none";
     healButtonP1.style.display = "none";
+    specialButtonP1.style.display = "none";
+
   }
   if (currentPlayer === player2) {
     attackButtonP2.style.display = "inline";
     blockButtonP2.style.display = "inline";
     healButtonP2.style.display = "inline";
+    specialButtonP2.style.display = "inline";
   
   } else {
     attackButtonP2.style.display = "none";
     blockButtonP2.style.display = "none";
     healButtonP2.style.display = "none";
+    document.getElementById("p2-special").style.display = "none";
   }
   
   }
@@ -112,10 +124,12 @@ function updateDisplay() {
       document.getElementById("player1").classList.add("hidden");
       document.getElementById("player1-controls").classList.add("hidden");
       document.getElementById("player2").classList.add("hidden");
-      document.getElementById("p2-attack").style.display = "none";
-      document.getElementById("p2-block").style.display = "none";
-      document.getElementById("p2-heal").style.display = "none";
-      document.getElementById("p2-wins").classList.remove("hidden");
+      document.getElementById("player2-controls").classList.add("hidden");
+      // document.getElementById("p2-attack").style.display = "none";
+      // document.getElementById("p2-block").style.display = "none";
+      // document.getElementById("p2-heal").style.display = "none";
+      // document.getElementById("p2-heal").style.display = "none";
+      // document.getElementById("p2-wins").classList.remove("hidden");
       alert("Hearbreaker wins!");
       document.getElementById("p2-wins").classList.remove("hidden");
 
@@ -126,30 +140,82 @@ function updateDisplay() {
         document.getElementById("player1").classList.add("hidden");
         document.getElementById("player1-controls").classList.add("hidden");
         document.getElementById("player2").classList.add("hidden");
-        document.getElementById("p2-attack").style.display = "none";
-        document.getElementById("p2-block").style.display = "none";
-        document.getElementById("p2-heal").style.display = "none";
-        document.getElementById("p1-wins").classList.remove("hidden");        
+        document.getElementById("player1-controls").classList.add("hidden");
+        // document.getElementById("p2-attack").style.display = "none";
+        // document.getElementById("p2-block").style.display = "none";
+        // document.getElementById("p2-heal").style.display = "none";
+        // document.getElementById("p1-wins").classList.remove("hidden");        
         alert("Hearthrob wins!");
         document.getElementById("p1-wins").classList.remove("hidden");        
         }
       }
 
+//======================== Hit or Miss ===============================
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function hitOrMissAttack(){
+  let x = getRandomInt(10);
+  if (x <= 3){
+      alert(`${currentPlayer.name} sang in the wrong key, the attack was ineffective.`)
+  }if (x >= 4){
+    currentPlayer.attack(currentPlayer === player1 ? player2 : player1);
+  }
+}
+
+function hitOrMissSpecial(){
+  let x = getRandomInt(10);
+  if (x <= 1){
+    alert(`The fans did not find ${currentPlayer.name}'s wink charming. It was ineffective.`)
+  }if (x >= 2){
+    currentPlayer.specialAttack(currentPlayer === player1 ? player2 : player1);
+  }
+}
+
+function hitOrMissHeal(){
+  let x = getRandomInt(10);
+  if (x <= 3){
+    alert(`${currentPlayer.name} accidentally picked the wrong angle... The fans were not impressed... It was ineffective.`)
+  }if (x >= 4){
+    currentPlayer.heal(currentPlayer === player1 ? player2 : player1);
+  }
+}
+
+function hitOrMissBlock(){
+  let x = getRandomInt(10);
+  if (x <= 5){
+    alert(`${currentPlayer.name} stumbled on a dance step. It was ineffective.`)
+  }if (x >= 6){
+    currentPlayer.block(currentPlayer === player1 ? player2 : player1);
+  }
+}
+
+
+
   //====================== Action & Switch ==================================    
   function handleAttack() {
-    currentPlayer.attack(currentPlayer === player1 ? player2 : player1);
+    hitOrMissAttack()
     winner()
     switchTurn();
   }
 
   function handleHeal() {
-    currentPlayer.heal();
+    // currentPlayer.heal();
+    hitOrMissHeal()
     winner()
     switchTurn();
     }
 
     function handleBlock() {
-      currentPlayer.block();
+      // currentPlayer.block();
+      hitOrMissBlock()
+      winner()
+      switchTurn();
+    }
+
+    function handleSpecialAttack() {
+      hitOrMissSpecial()
       winner()
       switchTurn();
     }
