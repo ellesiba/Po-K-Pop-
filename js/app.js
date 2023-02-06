@@ -52,7 +52,7 @@ function instructions(){
         }
 
         heal() {
-          this.health = Math.min(this.health + 25, MAX_HEALTH);
+          this.health = Math.min(this.health + 35, MAX_HEALTH);
         }
 
         block() {
